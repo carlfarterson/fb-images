@@ -66,7 +66,7 @@ while True:
     fb_date = xpath('span[@id="fbPhotoSnowliftTimestamp"]/a/abbr').get_attribute('title') # Timestamp of image
     img_name, photo_count = rename_img(fb_date, photo_count)
 
-
+    move(new_image(), img_name)
 
 
     try:
