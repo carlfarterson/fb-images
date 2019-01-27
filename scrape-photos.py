@@ -5,15 +5,12 @@ import numpy as np
 import pandas as pd
 from functions import *
 
-login, password = pd.read_csv('login.csv').values[0]
+def main(img_count, first_img=None):
 
-def main(img_count):
     xpath('span[contains(text(), "Options")]').click() # Click on options
     sleep(1)
     download_image() # download image
-    sleep(1)
-
-    if img_count == 1:
+    if first_img is None:
         # Get the name of the first file downloaded to ensure we're not downloading
         # another file w/ the same name.
         file = most_recent_file('~/Downloads')
@@ -30,10 +27,14 @@ def main(img_count):
     move(most_recent_file('~/Downloads'), filename)
     xpath('a[@title="Next"]').click() # Go to next image
     sleep(1)
-    return main(img_count + 1)
+    return main(img_count + 1, first_img)
 
 
 if __name__ == '__main__':
+
+    login, password = pd.read_csv('login.csv').values[0]
+    first_img = None
+
     # Log in to Facebook
     xpath('input[@id="email"]').send_keys(login)
     xpath('input[@id="pass"]').send_keys(password)
@@ -43,11 +44,11 @@ if __name__ == '__main__':
     t_0 = 0
     wait_for_closed_notification(t_0)
     # Go to photos
-    sleep(3)
+    sleep(5)
     xpath('a[contains(text(), "Photos")]').click()
     sleep(5)
     ''' Download 'Photos of You' '''
     makedirs('Photos-of-You') # Make folder
     xpath('div[@class="tagWrapper"]').click() # click on first image
-    sleep(1)
+    sleep(5)
     main(1)
