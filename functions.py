@@ -34,6 +34,7 @@ def download_image():
     a = xpath('a[@data-action-type="download_photo"]', container=photos)
     link = a[-1].get_attribute('href') # Get link to download
     driver.get(link)  # Download link
+    sleep(1)
     return
 
 
