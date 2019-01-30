@@ -14,19 +14,26 @@ driver.get('https://facebook.com/login')
 def xpath(path, container=None):
     if not container:
         return driver.find_element_by_xpath('//' + path)
-    return container.find_elements_by_xpath('//' + path)
+    return xpath('//' + container).find_elements_by_xpath('/' + path)
 
 
-def wait_for_closed_notification(t_0):
-    if t_0 > 60:
-        return "Unable to download images.  Ending Early"
-    else:
-        try:
-            xpath('a[@title="Profile"]/span').click()
-            driver.minimize_window()
-        except:
-            sleep(1)
-            return wait_for_closed_notification(t_0 + 1)
+# def wait_for_closed_notification():
+#     t_0 = 0
+#     while t_0 < 60:
+#         try:
+#             xpath('a[@title="Profile"]/span').click()
+#         except:
+#
+#
+#     if t_0 > 60:
+#         return "Unable to download images.  Ending Early"
+#     else:
+#         try:
+#             xpath('a[@title="Profile"]/span').click()
+#             # driver.minimize_window()
+#         except:
+#             sleep(1)
+#             return wait_for_closed_notification(t_0 + 1)
 
 
 def download_image():
