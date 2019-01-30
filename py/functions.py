@@ -1,3 +1,6 @@
+import random
+import asyncio
+from decimal import Decimal
 from time import sleep
 from glob import glob
 from datetime import datetime
@@ -6,9 +9,15 @@ from os import getcwd
 from os.path import expanduser, getctime
 from selenium import webdriver
 
+
+
 # Open browser
 driver = webdriver.Chrome(getcwd() + "/chromedriver")
 driver.get('https://facebook.com/login')
+
+# Wait for any time between 1 and 3 seconds between each action
+def pause():
+    return sleep(random.uniform(1,3))
 
 
 def xpath(path, container=None):
@@ -17,23 +26,23 @@ def xpath(path, container=None):
     return xpath('//' + container).find_elements_by_xpath('/' + path)
 
 
-# def wait_for_closed_notification():
-#     t_0 = 0
-#     while t_0 < 60:
-#         try:
-#             xpath('a[@title="Profile"]/span').click()
-#         except:
-#
-#
-#     if t_0 > 60:
-#         return "Unable to download images.  Ending Early"
-#     else:
-#         try:
-#             xpath('a[@title="Profile"]/span').click()
-#             # driver.minimize_window()
-#         except:
-#             sleep(1)
-#             return wait_for_closed_notification(t_0 + 1)
+def wait_for_closed_notification():
+    t_0 = 0
+    while t_0 < 60:
+        try:
+            xpath('a[@title="Profile"]/span').click()
+        except:
+
+
+    if t_0 > 60:
+        return "Unable to download images.  Ending Early"
+    else:
+        try:
+            xpath('a[@title="Profile"]/span').click()
+            driver.minimize_window()
+        except:
+            sleep(1)
+            return wait_for_closed_notification(t_0 + 1)
 
 
 def download_image():
@@ -41,7 +50,6 @@ def download_image():
     a = xpath('a[@data-action-type="download_photo"]', container=photos)
     link = a[-1].get_attribute('href') # Get link to download
     driver.get(link)  # Download link
-    sleep(1)
     return
 
 
