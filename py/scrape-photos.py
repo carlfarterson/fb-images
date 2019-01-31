@@ -7,7 +7,51 @@ from functions import *
 
 def main(img_count=None, first_img=None):
 
-    xpath('span[contains(text(), "Options")]').click() # Click on options
+    await_click('span[contains(text(), "Options")]')
+    driver.minimize_window()
+
+    # navigate to profile and get profile username
+    await_click('a[@title="Profile"]/span')
+
+    # with facebook.com/username as f
+    facebook = 'https://www.facebook.com/'
+    url = driver.current_url
+    # username = url[url.find('.com/') + 5:] # Do I really need username?
+
+    # 1. Photos of You
+    def Photos_of_You():
+        # f + '/photos_of'
+        driver.get(url + '/photos_of')
+        # Click on first image
+        await_click('div[@class="tagWrapper"]')
+        # Keep download name of first image to determine when we're back to the beginning
+
+
+    # 2. Your Photos
+    def Your_Photos():
+        # f + '/photos_all'
+        driver.get(url + '/photos_all')
+        # Click on first image
+        await_click('???')
+        # Keep download name of first image to determine when we're back to the beginning
+
+
+
+    # 3. Your Albums
+    def Your_Albums():
+        # f + '/photos_albums'
+        driver.get(url + '/photos_albums')
+        # Scroll down to get an image for every album
+
+        # Loop through the hyperlinks on the albums
+
+            # Click on first image
+            await_click('???')
+
+            # Keep download name of first image to determine when we're back to the beginning
+
+
+
     pause()
     download_image() # download image
     pause()
