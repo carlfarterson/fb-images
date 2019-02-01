@@ -12,13 +12,4 @@ removing Facebook from your entire life.
 Download your entire "Photos of You" album on Facebook to your computer into a folder
 labeled `Photos-of-You`
 
-### Steps
-1. Clone repository to local computer
-2. Add your login email/password to `login.csv`
-3. Command into main folder of repository
-4. `pip install -r requirements.txt`
-5. `python scrape-photos.py`
-6. Once you're automatically logged in, you need to close the banner alert for notifications
-7. That's it
-
-__TODO: add automation to download all photos from all albums__
+#### Work in Progress.  Expect a completed version soon!
