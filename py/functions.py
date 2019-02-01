@@ -9,14 +9,9 @@ from os import getcwd
 from os.path import expanduser, getctime
 from selenium import webdriver
 
-
 # Open browser
 driver = webdriver.Chrome(getcwd() + "/chromedriver")
 driver.get('https://facebook.com/login')
-
-
-# def pause():
-#     return sleep(random.uniform(1,3))
 
 
 def await_click(xpath, i=0):
