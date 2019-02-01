@@ -14,43 +14,9 @@ driver = webdriver.Chrome(getcwd() + "/chromedriver")
 driver.get('https://facebook.com/login')
 
 
-def await_click(xpath, i=0):
-    if i > 60:
-        return 'Failed after 60 seconds.  Aborting.'
-
-    try:
-        driver.find_element_by_xpath('//' + xpath).click()
-    except:
-        sleep(1)
-        return await_click(xpath, i+1)
-
-
-def wait_for_closed_notification():
-    t_0 = 0
-    while t_0 < 60:
-        try:
-            xpath('a[@title="Profile"]/span').click()
-        except:
-    if t_0 > 60:
-        return "Unable to download images.  Ending Early"
-    else:
-        try:
-            xpath('a[@title="Profile"]/span').click()
-            driver.minimize_window()
-        except:
-            sleep(1)
-            return wait_for_closed_notification(t_0 + 1)
-
-
-def xpath(path, container=None):
-    if not container:
-        return driver.find_element_by_xpath('//' + path)
-    return xpath('//' + container).find_elements_by_xpath('/' + path)
-
-
 def download_image():
-    photos = xpath('div[@id="pagelet_timeline_medley_photos"]')
-    a = xpath('a[@data-action-type="download_photo"]', container=photos) # Can this work
+    # photos = xpath('div[@id="pagelet_timeline_medley_photos"]')
+    a = xpath('a[@data-action-type="download_photo"]', container=album) # Can this work
     link = a[-1].get_attribute('href') # Get link to download
     driver.get(link)  # Download link
     return

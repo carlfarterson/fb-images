@@ -20,37 +20,8 @@ def main(img_count=None, first_img=None):
 
     # 1. Photos of You
     def Photos_of_You():
-        # f + '/photos_of'
         driver.get(url + '/photos_of')
-        # Click on first image
         await_click('div[@class="tagWrapper"]')
-        # Keep download name of first image to determine when we're back to the beginning
-
-
-    # 2. Your Photos
-    def Your_Photos():
-        # f + '/photos_all'
-        driver.get(url + '/photos_all')
-        # Click on first image
-        await_click('???')
-        # Keep download name of first image to determine when we're back to the beginning
-
-
-
-    # 3. Your Albums
-    def Your_Albums():
-        # f + '/photos_albums'
-        driver.get(url + '/photos_albums')
-        # Scroll down to get an image for every album
-
-        # Loop through the hyperlinks on the albums
-
-            # Click on first image
-            await_click('???')
-
-            # Keep download name of first image to determine when we're back to the beginning
-
-
 
     pause()
     download_image() # download image
