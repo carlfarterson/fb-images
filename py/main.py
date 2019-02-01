@@ -1,3 +1,6 @@
+# def pause():
+#     return sleep(random.uniform(1,3))
+
 facebook = 'https://www.facebook.com/'
 url = driver.current_url
 username = url[url.find('.com/') + 5:]
