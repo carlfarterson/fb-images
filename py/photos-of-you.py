@@ -42,6 +42,7 @@ xpath('div[@class="tagWrapper"]').click()
 makedirs('../Photos of You')
 
 while True:
+    sleep(0.5)
     img_link = xpath('img[@class="spotlight"]').get_attribute('src')
     img = imageio.imread(img_link)
 
