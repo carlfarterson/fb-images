@@ -31,7 +31,7 @@ fb.run('../Photos/Photos of You/')
 
 
 ''' Your Photos '''
-driver.get(fb + username + '/photos_all')
+driver.get('https://www.facebook.com/' + username + '/photos_all')
 fb.async_click('div[@class="tagWrapper"]')
 fb.run('../Photos/Your Photos/')
 
