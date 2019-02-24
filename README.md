@@ -19,10 +19,10 @@ within named folders to match the structure of how Facebook stores your images. 
 This version does not download `Videos` or `Featured Photos`.
 
 ### Instructions
-1. Add your username/password to the correct boxes in __login.csv__.
-2. [Install Python](https://www.python.org/downloads/)
-3. Clone this repository
+1. [Install Python](https://www.python.org/downloads/)
+2. Clone this repository
     `git clone https://github.com/cartercarlson/fb-images`
+3. Add your username/password to the correct boxes in __login.csv__.
 4. Command into repository
     `cd fb-images`
 5. Install requirements
